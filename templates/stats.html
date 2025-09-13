@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head><title>City Stats</title></head>
+<body>
+<h1>City Stats</h1>
+<table border="1" cellpadding="5">
+<tr><th>City</th><th>Followers</th></tr>
+{% for city, people in cities.items() %}
+<tr>
+    <td><a href="{{ url_for('city_view', city=city) }}">{{ city }}</a></td>
+    <td>{{ people|length }}</td>
+</tr>
+{% endfor %}
+</table>
+<p><a href="/">Back</a></p>
+</body>
+</html>

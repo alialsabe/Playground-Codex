@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Followers Map</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+<div id='map' style='width: 100%; height: 600px;'></div>
+<script>
+mapboxgl.accessToken = '{{ mapbox_token }}';
+const token = '{{ mapbox_token }}';
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11',
+  center: [0,0],
+  zoom: 1
+});
+const followers = {{ followers|tojson }};
+followers.forEach(f => {
+  fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(f.location)}.json?access_token=${token}`)
+    .then(r => r.json())
+    .then(data => {
+      if(data.features && data.features.length){
+        const [lng, lat] = data.features[0].center;
+        new mapboxgl.Marker()
+          .setLngLat([lng, lat])
+          .setPopup(new mapboxgl.Popup().setHTML(`<a href='${f.href}' target='_blank'>${f.username}</a>`))
+          .addTo(map);
+      }
+    });
+});
+</script>
+<p><a href="/">Back</a></p>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head><title>{{ city }}</title></head>
+<body>
+<h1>Followers in {{ city }}</h1>
+<ul>
+{% for f in followers %}
+<li><a href="{{ f.href }}" target="_blank">{{ f.username }}</a></li>
+{% endfor %}
+</ul>
+<p><a href="/stats">Back to stats</a></p>
+</body>
+</html>
