@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>Followers</title>
+</head>
+<body>
+<h1>Followers</h1>
+<form action="/" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="application/json">
+    <button type="submit">Upload</button>
+</form>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>User</th>
+        <th>Location</th>
+        <th>Tags</th>
+        <th>Notes</th>
+        <th>Save</th>
+    </tr>
+    {% for f in followers %}
+    <tr>
+        <form action="{{ url_for('update_follower', username=f.username) }}" method="post">
+            <td><a href="{{ f.href }}" target="_blank">{{ f.username }}</a></td>
+            <td><input type="text" name="location" value="{{ f.location }}"></td>
+            <td><input type="text" name="tags" value="{{ f.tags|join(' ') }}"></td>
+            <td><input type="text" name="notes" value="{{ f.notes }}"></td>
+            <td><button type="submit">Save</button></td>
+        </form>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="/map">Map View</a> | <a href="/stats">Stats</a></p>
+</body>
+</html>
