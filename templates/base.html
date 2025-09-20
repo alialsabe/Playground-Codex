@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}City Engagement Dashboard{% endblock %}</title>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+    {% block head_scripts %}{% endblock %}
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>City Engagement Dashboard</h1>
+      <p class="subtitle">Track community followers across major global hubs.</p>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    {% block footer_scripts %}{% endblock %}
+  </body>
+</html>

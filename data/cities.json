@@ -1,0 +1,12 @@
+[
+  {"city": "New York", "latitude": 40.7128, "longitude": -74.006, "followers": 158400},
+  {"city": "Los Angeles", "latitude": 34.0522, "longitude": -118.2437, "followers": 126250},
+  {"city": "Chicago", "latitude": 41.8781, "longitude": -87.6298, "followers": 102730},
+  {"city": "Houston", "latitude": 29.7604, "longitude": -95.3698, "followers": 88910},
+  {"city": "Phoenix", "latitude": 33.4484, "longitude": -112.074, "followers": 78320},
+  {"city": "London", "latitude": 51.5072, "longitude": -0.1276, "followers": 172540},
+  {"city": "Berlin", "latitude": 52.52, "longitude": 13.405, "followers": 65310},
+  {"city": "Tokyo", "latitude": 35.6762, "longitude": 139.6503, "followers": 160720},
+  {"city": "Sydney", "latitude": -33.8688, "longitude": 151.2093, "followers": 54780},
+  {"city": "São Paulo", "latitude": -23.5558, "longitude": -46.6396, "followers": 93450}
+]

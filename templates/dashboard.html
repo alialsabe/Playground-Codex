@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block head_scripts %}
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js" defer></script>
+{% endblock %}
+
+{% block content %}
+  <section class="tabs" role="tablist" aria-label="Dashboard Sections">
+    <button class="tab-button active" data-target="map-panel" role="tab" aria-selected="true">Map</button>
+    <button class="tab-button" data-target="city-panel" role="tab" aria-selected="false">City List</button>
+    <button class="tab-button" data-target="analytics-panel" role="tab" aria-selected="false">Analytics</button>
+  </section>
+
+  <section id="map-panel" class="tab-panel active" role="tabpanel">
+    <div id="map" class="map-container" role="application" aria-label="Follower map"></div>
+    <p class="map-hint">Hover over a city marker to reveal follower counts. Click clusters to zoom in.</p>
+    <div id="mapbox-token-warning" class="alert hidden" role="alert">
+      A Mapbox access token is required to load the interactive map. Set the <code>MAPBOX_TOKEN</code> environment variable before starting the Flask server.
+    </div>
+  </section>
+
+  <section id="city-panel" class="tab-panel" role="tabpanel" aria-hidden="true">
+    <div class="card">
+      <header class="card-header">
+        <h2>Follower Breakdown by City</h2>
+        <p>Total followers: <strong>{{ "{:,}".format(total_followers) }}</strong></p>
+      </header>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">City</th>
+              <th scope="col">Followers</th>
+              <th scope="col">Latitude</th>
+              <th scope="col">Longitude</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in city_table %}
+              <tr>
+                <td data-label="City">{{ row.city }}</td>
+                <td data-label="Followers">{{ "{:,}".format(row.followers) }}</td>
+                <td data-label="Latitude">{{ "{:.4f}".format(row.latitude) }}</td>
+                <td data-label="Longitude">{{ "{:.4f}".format(row.longitude) }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="analytics-panel" class="tab-panel" role="tabpanel" aria-hidden="true">
+    <div class="card">
+      <header class="card-header">
+        <h2>Follower Analytics</h2>
+        <p>Visualize follower distribution across major cities.</p>
+      </header>
+      <div class="chart-grid">
+        <figure class="chart-card">
+          <canvas id="followers-bar-chart" aria-label="Bar chart of followers per city" role="img"></canvas>
+        </figure>
+        <figure class="chart-card">
+          <canvas id="followers-pie-chart" aria-label="Pie chart of followers per city" role="img"></canvas>
+        </figure>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block footer_scripts %}
+  <script>
+    window.dashboardData = {
+      geojson: {{ geojson | tojson }},
+      cityTable: {{ city_table | tojson }},
+      totalFollowers: {{ total_followers | tojson }},
+      mapboxToken: {{ mapbox_token | tojson }}
+    };
+  </script>
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+{% endblock %}
