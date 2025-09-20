@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}City Profile | City Explorer{% endblock %}
+
+{% block content %}
+<section class="py-4">
+    <h1 class="page-title">{{ city_name|default('Featured City') }}</h1>
+    <p class="lead text-secondary">Dive into the latest highlights, trends, and opportunities for this location.</p>
+    <div class="row g-4">
+        <div class="col-xl-4">
+            <div class="card glass-panel border-0 h-100">
+                <div class="card-body">
+                    <h2 class="h5 fw-semibold mb-3">At a glance</h2>
+                    <ul class="list-unstyled mb-0 text-secondary small">
+                        <li class="mb-2">Population: {{ population|default('—') }}</li>
+                        <li class="mb-2">Median age: {{ median_age|default('—') }}</li>
+                        <li>Key industry: {{ key_industry|default('—') }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <div class="card glass-panel border-0 h-100">
+                <div class="card-body">
+                    <h2 class="h5 fw-semibold mb-3">Narrative</h2>
+                    <p class="text-secondary small mb-0">{{ narrative|default('Provide contextual insights and planning notes for this city here. Summaries and bullet points will be styled consistently across the site.') }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

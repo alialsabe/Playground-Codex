@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}City Statistics | City Explorer{% endblock %}
+
+{% block content %}
+<section class="py-4">
+    <h1 class="page-title">City Statistics</h1>
+    <p class="lead text-secondary">Compare demographic, economic, and sustainability metrics across regions.</p>
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <div class="card glass-panel border-0 h-100">
+                <div class="card-body">
+                    <h2 class="h5 fw-semibold mb-3">Key insights</h2>
+                    <ul class="list-unstyled mb-0 text-secondary small">
+                        <li class="mb-2">Population growth trends over the past decade.</li>
+                        <li class="mb-2">Infrastructure investment per capita.</li>
+                        <li>Air quality improvements compared to regional averages.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card glass-panel border-0 h-100">
+                <div class="card-body">
+                    <h2 class="h5 fw-semibold mb-3">Download reports</h2>
+                    <p class="text-secondary small">Export the latest datasets in CSV or PDF to integrate with your own models.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a class="btn btn-primary btn-sm" href="#">Download CSV</a>
+                        <a class="btn btn-outline-light btn-sm" href="#">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
