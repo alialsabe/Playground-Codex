@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | City Explorer{% endblock %}
+
+{% block content %}
+<section class="py-4">
+    <div class="row g-4 align-items-center">
+        <div class="col-lg-7">
+            <h1 class="display-5 fw-bold text-gradient">Welcome to City Explorer</h1>
+            <p class="lead text-secondary">Discover interactive maps, analyze statistics, and dive deep into the unique character of every city we cover.</p>
+            <div class="d-flex flex-wrap gap-3">
+                <a class="btn btn-primary btn-lg" href="{{ url_for('map') }}">View Interactive Map</a>
+                <a class="btn btn-outline-light btn-lg" href="{{ url_for('stats') }}">See City Stats</a>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="card glass-panel h-100 border-0">
+                <div class="card-body">
+                    <h2 class="h4 fw-semibold mb-3">What's new</h2>
+                    <ul class="list-unstyled mb-0 small text-secondary">
+                        <li class="mb-2">Live data updates every hour.</li>
+                        <li class="mb-2">Optimized for dark-mode viewing on every device.</li>
+                        <li>Shareable city profiles tailored for planners and researchers.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

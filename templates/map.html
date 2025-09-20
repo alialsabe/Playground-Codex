@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Interactive Map | City Explorer{% endblock %}
+
+{% block content %}
+<section class="py-4">
+    <h1 class="page-title">Interactive Map</h1>
+    <p class="lead text-secondary">Zoom into neighborhoods, switch between layers, and explore key metrics visually.</p>
+    <div class="card glass-panel border-0">
+        <div class="card-body">
+            <div class="ratio ratio-16x9">
+                <div class="placeholder rounded-4 d-flex align-items-center justify-content-center">
+                    <span class="text-secondary">Map visualization renders here.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
